@@ -155,7 +155,7 @@ local function hypot(xr,xi)
 end
 
 --------------------------------------------------------------------------------
-local function loghypot(xr,xi)
+local function loghypot(xr,xi,base)
 --------------------------------------------------------------------------------
   local xr=math_.abs(xr)
   local xi=math_.abs(xi)
@@ -166,9 +166,9 @@ local function loghypot(xr,xi)
     return math_.log(xr)
   end
   if xr>xi then
-    return math_.log(xr)+math_.log(1+(xi/xr)^2)/2
+    return math_.log(xr,base)+math_.log(1+(xi/xr)^2,base)/2
   else
-    return math_.log(xi)+math_.log(1+(xr/xi)^2)/2
+    return math_.log(xi,base)+math_.log(1+(xr/xi)^2,base)/2
   end
 end
 
@@ -561,29 +561,29 @@ function complex.imag(self,v)
 end
 
 --------------------------------------------------------------------------------
-function complex.log(x)
+function complex.log(x,base)
 --------------------------------------------------------------------------------
   check.complex(x,1)
-  local y={r=loghypot(x.r,x.i),i=math.atan2(x.i,x.r)}
+  local y={r=loghypot(x.r,x.i,base),i=math.atan2(x.i,x.r)*math_.log(math.exp(1),base)}
   return setmetatable(y,complex)
 end
 
 --------------------------------------------------------------------------------
 -- GLOBAL SPACE MODIFICATION
 --------------------------------------------------------------------------------
-function math.log(x)
+function math.log(x,base)
 --------------------------------------------------------------------------------
   local z=tonumber(x)
   if z then
     if 0<=z then
-      return math_.log(z)
+      return math_.log(z,base)
     else
       x={r=z,i=0}
       setmetatable(x,complex)
     end
   end
   if is.complex(x) then
-    return complex.log(x)
+    return complex.log(x,base)
   else
     error("bad argument #1 to 'log' (real or complex number expected, got %s)",type(x))
   end

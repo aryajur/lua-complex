@@ -1,6 +1,10 @@
 lua-complex
 ===========
 
+Reference
+---------
+This module is picked from the original complex.lua module created by Philippe Castagliola at this page: http://philippe.castagliola.free.fr/LUA/complex.html. Some modifications are done to make it Lua 5.2 compatible and also added the base argument to the log function.
+
 Introduction
 ------------
 "complex.lua" is a simple library for complex numbers written in pure lua. If you want to use it, just download the file "complex.lua" and put it somewhere in your LUA_PATH. You can byte compile it using luac in order to obtain a "complex.luac" file. Then start lua using lua -l complex or add a require "complex" in your lua file.

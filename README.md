@@ -10,17 +10,17 @@ Tutorial
 
 If you want to create the complex number 3+4i, type
 
-> x1=3+4*math.i
+	> x1=3+4*math.i
 
 If you are lazy, you can also type
 
->I=math.i
->x1=3+4*I
+	>I=math.i
+	>x1=3+4*I
 
 As you can notice, "complex.lua" add an new entry in the math table. This entry is the complex number i itself and since "complex.lua" use the lua arithmetic metamethods, everything build from math.i will be a lua complex number (there is no need of a complex.new function). Just to check, type
 
-> =type(math.i)
-complex
+	> =type(math.i)
+	complex
 
 > =type(x1)
 complex

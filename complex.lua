@@ -85,7 +85,7 @@ end
 --------------------------------------------------------------------------------
 complex={}
 complex.__index=complex
-complex.version="2011-01-05"
+complex.version="2014-05-31"
 
 math.i=setmetatable({r=0,i=1},complex)
 
